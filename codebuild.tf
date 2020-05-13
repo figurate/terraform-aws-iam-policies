@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "codebuild_vpc" {
 }
 
 resource "aws_iam_policy" "codebuild_vpc" {
-  name        = "bedrock-codebuild-vpc"
+  name        = join("-", compact([var.name_prefix, "codebuild-vpc-management"]))
   description = "Permissions required for CodeBuild to run in a VPC"
   policy      = data.aws_iam_policy_document.codebuild_vpc.json
 }

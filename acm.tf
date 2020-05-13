@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "acm_import_certificate" {
 }
 
 resource "aws_iam_policy" "acm_import_certificate" {
-  name        = "bedrock-acm-importcert"
+  name        = join("-", compact([var.name_prefix, "acm-certificate-import"]))
   description = "Import certificates provisioned externally"
   policy      = data.aws_iam_policy_document.acm_import_certificate.json
 }

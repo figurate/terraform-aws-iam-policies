@@ -1,5 +1,5 @@
 /**
- * # AWS IAM role configuration
+ * # ![AWS](aws-logo.png) IAM role configuration
  *
  * Purpose: Provision IAM roles in AWS.
  *

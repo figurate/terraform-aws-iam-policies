@@ -25,28 +25,19 @@ data "aws_iam_policy_document" "iam_keyrotation" {
 
 data "aws_iam_policy_document" "iam_servicerole_create" {
   statement {
-    actions = [
-      "iam:CreateServiceLinkedRole",
-    ]
+    actions   = ["iam:CreateServiceLinkedRole"]
     resources = ["*"]
   }
 }
 
 data "aws_iam_policy_document" "iam_assumerole" {
   statement {
-    actions = [
-      "iam:ListRoles",
-    ]
+    actions   = ["iam:ListRoles"]
     resources = ["*"]
   }
-
   statement {
-    actions = [
-      "sts:AssumeRole",
-    ]
-    resources = [
-      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-blueprint-role",
-    ]
+    actions   = ["sts:AssumeRole"]
+    resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.assume_role_filter}"]
   }
 }
 
@@ -85,43 +76,43 @@ data "aws_iam_policy_document" "instance_profile_fullaccess" {
 }
 
 resource "aws_iam_policy" "iam_passrole" {
-  name        = "bedrock-iam-passrole"
+  name        = join("-", compact([var.name_prefix, "iam-passrole-account"]))
   description = "Deprecated: use bedrock-cloudformation-passrole"
   policy      = data.aws_iam_policy_document.iam_passrole_policy.json
 }
 
 resource "aws_iam_policy" "cloudformation_passrole" {
-  name        = "bedrock-cloudformation-passrole"
+  name        = join("-", compact([var.name_prefix, "iam-passrole-cloudformation"]))
   description = "Permission to pass role to cloudformation"
   policy      = data.aws_iam_policy_document.cloudformation_passrole_policy.json
 }
 
 resource "aws_iam_policy" "iam_keyrotation" {
-  name        = "bedrock-iam-keyrotation"
+  name        = join("-", compact([var.name_prefix, "iam-access-key-rotation"]))
   description = "Manage IAM access keys"
   policy      = data.aws_iam_policy_document.iam_keyrotation.json
 }
 
 resource "aws_iam_policy" "iam_servicerole_create" {
-  name        = "bedrock-iam-servicerole-create"
+  name        = join("-", compact([var.name_prefix, "iam-service-linked-role-create"]))
   description = "Create IAM service-linked roles"
   policy      = data.aws_iam_policy_document.iam_servicerole_create.json
 }
 
 resource "aws_iam_policy" "iam_assumerole" {
-  name        = "bedrock-iam-assumerole"
+  name        = join("-", compact([var.name_prefix, "iam-assumerole-account"]))
   description = "Assume blueprint IAM roles"
   policy      = data.aws_iam_policy_document.iam_assumerole.json
 }
 
 resource "aws_iam_policy" "iam_groupadmin" {
-  name        = "bedrock-iam-groupadmin"
+  name        = join("-", compact([var.name_prefix, "iam-group-management"]))
   description = "Manage IAM user groups"
   policy      = data.aws_iam_policy_document.iam_groupadmin.json
 }
 
 resource "aws_iam_policy" "iam_instance_profile" {
-  name        = "bedrock-instance-profile-fullaccess"
+  name        = join("-", compact([var.name_prefix, "iam-instance-profile-fullaccess"]))
   description = "Manage IAM instance profiles"
   policy      = data.aws_iam_policy_document.instance_profile_fullaccess.json
 }

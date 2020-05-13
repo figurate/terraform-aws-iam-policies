@@ -1,4 +1,4 @@
-# AWS IAM role configuration
+# ![AWS](aws-logo.png) IAM role configuration
 
 Purpose: Provision IAM roles in AWS.
 
@@ -12,23 +12,27 @@ This script will create a role that has the following privileges:
 
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| aws | >= 2.7.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.7.0 |
+| aws | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| assume\_role\_filter | Filter the IAM roles that may be assumed | `string` | `"*"` | no |
+| name\_prefix | A prefix added to all IAM policy names | `string` | `""` | no |
 | region | Selected AWS region | `any` | n/a | yes |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| dynamodb\_terraform\_access\_arn | n/a |
+| iam\_assumerole\_arn | n/a |
+| s3\_terraform\_access\_arn | n/a |
 

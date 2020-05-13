@@ -30,13 +30,13 @@ data "aws_iam_policy_document" "ec2_securitygroup_fullaccess" {
 }
 
 resource "aws_iam_policy" "ec2_subnet_fullaccess" {
-  name        = "bedrock-ec2-subnet-fullaccess"
+  name        = join("-", compact([var.name_prefix, "ec2-subnet-management"]))
   description = "Manage VPC Subnets"
   policy      = data.aws_iam_policy_document.ec2_subnet_fullaccess.json
 }
 
 resource "aws_iam_policy" "ec2_securitygroup_fullaccess" {
-  name        = "bedrock-ec2-securitygroup-fullaccess"
+  name        = join("-", compact([var.name_prefix, "ec2-security-group-management"]))
   description = "Manage VPC Security Groups"
   policy      = data.aws_iam_policy_document.ec2_securitygroup_fullaccess.json
 }

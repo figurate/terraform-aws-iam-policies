@@ -19,13 +19,13 @@ data "aws_iam_policy_document" "kms_encryption" {
 }
 
 resource "aws_iam_policy" "kms_keymanagement" {
-  name        = "bedrock-kms-keymanagement"
+  name        = join("-", compact([var.name_prefix, "kms-key-management"]))
   description = "Rotate KMS keys"
   policy      = data.aws_iam_policy_document.kms_additional.json
 }
 
 resource "aws_iam_policy" "kms_encryption" {
-  name        = "bedrock-kms-encryption"
+  name        = join("-", compact([var.name_prefix, "kms-encryption-management"]))
   description = "Encrypt/decrypt using KMS keys"
   policy      = data.aws_iam_policy_document.kms_encryption.json
 }

@@ -16,7 +16,7 @@ data "aws_iam_policy_document" "rds_admin" {
 }
 
 resource "aws_iam_policy" "rds_admin" {
-  name        = "bedrock-rds-admin"
+  name        = join("-", compact([var.name_prefix, "rds-instance-management"]))
   description = "Manage power cycling RDS clusters and instances"
   policy      = data.aws_iam_policy_document.rds_admin.json
 }

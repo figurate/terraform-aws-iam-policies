@@ -22,13 +22,13 @@ data "aws_iam_policy_document" "cloudwatch_log_groups" {
 }
 
 resource "aws_iam_policy" "cloudwatch_logs" {
-  name        = "bedrock-cloudwatch-logs"
+  name        = join("-", compact([var.name_prefix, "cloudwatch-log-management"]))
   description = "Manage CloudWatch log entries"
   policy      = data.aws_iam_policy_document.cloudwatch_logs.json
 }
 
 resource "aws_iam_policy" "cloudwatch_log_groups" {
-  name        = "bedrock-cloudwatch-log-groups"
+  name        = join("-", compact([var.name_prefix, "cloudwatch-log-group-management"]))
   description = "Manage CloudWatch log groups"
   policy      = data.aws_iam_policy_document.cloudwatch_log_groups.json
 }

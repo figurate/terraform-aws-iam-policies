@@ -26,13 +26,12 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | assume\_role\_filter | Filter the IAM roles that may be assumed | `string` | `"*"` | no |
 | name\_prefix | A prefix added to all IAM policy names | `string` | `""` | no |
+| policies | Names of predefined policies to include | `list` | `[]` | no |
 | region | Selected AWS region | `any` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| dynamodb\_terraform\_access\_arn | n/a |
-| iam\_assumerole\_arn | n/a |
-| s3\_terraform\_access\_arn | n/a |
+| policy\_arns | n/a |
 

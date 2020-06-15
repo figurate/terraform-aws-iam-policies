@@ -12,3 +12,10 @@
  * * Access to manage Terraform state locks associated with the blueprint
  */
 data "aws_caller_identity" "current" {}
+
+resource "aws_iam_policy" "policies" {
+  count       = length(var.policies)
+  name        = join("-", compact([var.name_prefix, local.policies[var.policies[count.index]]["name"]]))
+  description = local.policies[var.policies[count.index]]["description"]
+  policy      = local.policies[var.policies[count.index]]["policy"].json
+}

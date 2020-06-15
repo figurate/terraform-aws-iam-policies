@@ -9,9 +9,3 @@ data "aws_iam_policy_document" "dynamodb_fullaccess" {
     resources = ["*"]
   }
 }
-
-resource "aws_iam_policy" "dynamodb_fullaccess" {
-  name        = join("-", compact([var.name_prefix, "dynamodb-fullaccess"]))
-  description = "Manage DynamoDB table entries"
-  policy      = data.aws_iam_policy_document.dynamodb_fullaccess.json
-}

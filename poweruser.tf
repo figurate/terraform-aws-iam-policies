@@ -4,9 +4,3 @@ data "aws_iam_policy_document" "poweruser_boundary_policy" {
     resources = ["arn:aws:cloudformation:${var.region}:${data.aws_caller_identity.current.account_id}:*"]
   }
 }
-
-resource "aws_iam_policy" "poweruser_boundary" {
-  name        = join("-", compact([var.name_prefix, "iam-poweruser-boundary"]))
-  description = "Restrict IAM functions to the specified region"
-  policy      = data.aws_iam_policy_document.poweruser_boundary_policy.json
-}

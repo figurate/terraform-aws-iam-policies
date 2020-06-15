@@ -20,15 +20,3 @@ data "aws_iam_policy_document" "cloudwatch_log_groups" {
     resources = ["arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:*"]
   }
 }
-
-resource "aws_iam_policy" "cloudwatch_logs" {
-  name        = join("-", compact([var.name_prefix, "cloudwatch-log-management"]))
-  description = "Manage CloudWatch log entries"
-  policy      = data.aws_iam_policy_document.cloudwatch_logs.json
-}
-
-resource "aws_iam_policy" "cloudwatch_log_groups" {
-  name        = join("-", compact([var.name_prefix, "cloudwatch-log-group-management"]))
-  description = "Manage CloudWatch log groups"
-  policy      = data.aws_iam_policy_document.cloudwatch_log_groups.json
-}

@@ -17,5 +17,7 @@ No provider.
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| policy\_arns | n/a |
 

@@ -7,5 +7,10 @@ data "aws_iam_policy_document" "acm_import_certificate" {
       "acm:DeleteCertificate",
     ]
     resources = var.resources
+    condition {
+      test     = "StringEquals"
+      values   = [var.region]
+      variable = "aws:RequestedRegion"
+    }
   }
 }

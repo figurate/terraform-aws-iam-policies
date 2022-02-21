@@ -18,8 +18,14 @@ test: validate
 
 docs:
 	$(TERRAFORM_DOCS) markdown ./ >./README.md && \
-		$(TERRAFORM_DOCS) markdown ./modules/all >./modules/all/README.md
+		$(TERRAFORM_DOCS) markdown ./modules/all >./modules/all/README.md && \
+		$(TERRAFORM_DOCS) markdown ./modules/boundary >./modules/boundary/README.md && \
+		$(TERRAFORM_DOCS) markdown ./modules/iam >./modules/iam/README.md && \
+		$(TERRAFORM_DOCS) markdown ./modules/terraform >./modules/terraform/README.md
 
 format:
 	$(TERRAFORM) fmt -list=true ./ && \
-		$(TERRAFORM) fmt -list=true ./modules/all
+		$(TERRAFORM) fmt -list=true ./modules/all && \
+		$(TERRAFORM) fmt -list=true ./modules/boundary && \
+		$(TERRAFORM) fmt -list=true ./modules/iam && \
+		$(TERRAFORM) fmt -list=true ./modules/terraform

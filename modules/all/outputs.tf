@@ -1,3 +1,3 @@
-output policy_arns {
-  value = module.permissions.policy_arns
+output "policy_arns" {
+  value = module.policies.policy_arns
 }

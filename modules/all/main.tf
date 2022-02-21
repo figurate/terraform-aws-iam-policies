@@ -1,4 +1,4 @@
-module "permissions" {
+module "policies" {
   source = "../.."
 
   region             = var.region

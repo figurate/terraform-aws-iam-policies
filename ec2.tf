@@ -15,6 +15,11 @@ data "aws_iam_policy_document" "ec2_subnet_fullaccess" {
 
 data "aws_iam_policy_document" "ec2_securitygroup_fullaccess" {
   statement {
+    sid = "SecurityGroupManagement"
+    principals {
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+      type        = "AWS"
+    }
     actions = [
       "ec2:CreateSecurityGroup",
       "ec2:DeleteSecurityGroup",

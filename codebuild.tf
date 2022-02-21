@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "codebuild_vpc" {
       "ec2:DescribeSecurityGroups",
       "ec2:DescribeVpcs",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
   statement {
     actions   = ["ec2:CreateNetworkInterfacePermission"]

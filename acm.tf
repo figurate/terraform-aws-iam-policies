@@ -6,6 +6,6 @@ data "aws_iam_policy_document" "acm_import_certificate" {
       "acm:ListTagsForCertificate",
       "acm:DeleteCertificate",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

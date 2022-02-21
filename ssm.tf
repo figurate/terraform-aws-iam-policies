@@ -6,6 +6,6 @@ data "aws_iam_policy_document" "ssm_params" {
       "ssm:AddTagsToResource",
       "ssm:RemoveTagsFromResource",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

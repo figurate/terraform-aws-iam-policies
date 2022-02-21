@@ -26,14 +26,14 @@ data "aws_iam_policy_document" "iam_keyrotation" {
 data "aws_iam_policy_document" "iam_servicerole_create" {
   statement {
     actions   = ["iam:CreateServiceLinkedRole"]
-    resources = ["*"]
+    resources = var.resources
   }
 }
 
 data "aws_iam_policy_document" "iam_assumerole" {
   statement {
     actions   = ["iam:ListRoles"]
-    resources = ["*"]
+    resources = var.resources
   }
   statement {
     actions   = ["sts:AssumeRole"]

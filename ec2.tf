@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "ec2_subnet_fullaccess" {
       "ec2:AssociateSubnetCidrBlock",
       "ec2:CreateDefaultSubnet",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }
 
@@ -25,6 +25,6 @@ data "aws_iam_policy_document" "ec2_securitygroup_fullaccess" {
       "ec2:DeleteTags",
       "ec2:Describe*",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

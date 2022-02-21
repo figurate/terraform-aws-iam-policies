@@ -3,6 +3,6 @@ data "aws_iam_policy_document" "application_autoscaling_fullaccess" {
     actions = [
       "application-autoscaling:*",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

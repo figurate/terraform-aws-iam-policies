@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "poweruser_boundary_policy" {
     sid         = "RestrictIAMWithoutBoundary"
     effect      = "Allow"
     not_actions = ["iam:*"]
-    resources   = ["*"]
+    resources   = var.resources
   }
 
   statement {
@@ -32,6 +32,6 @@ data "aws_iam_policy_document" "poweruser_boundary_policy" {
       ]
       variable = "iam:PermissionsBoundary"
     }
-    resources = ["*"]
+    resources = var.resources
   }
 }

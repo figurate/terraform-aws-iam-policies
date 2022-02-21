@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "kms_additional" {
       "kms:UpdateKeyDescription",
       "kms:EnableKeyRotation",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }
 
@@ -14,6 +14,6 @@ data "aws_iam_policy_document" "kms_encryption" {
       "kms:Encrypt",
       "kms:Decrypt",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

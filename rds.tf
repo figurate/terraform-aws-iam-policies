@@ -11,6 +11,6 @@ data "aws_iam_policy_document" "rds_admin" {
       "logs:DescribeLogStreams",
       "cloudwatch:Describe*",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

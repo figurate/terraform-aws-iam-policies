@@ -5,6 +5,6 @@ data "aws_iam_policy_document" "route53_additional" {
       "route53:GetHostedZone",
       "route53:ListTagsForResource",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

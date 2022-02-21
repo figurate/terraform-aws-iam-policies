@@ -6,6 +6,6 @@ data "aws_iam_policy_document" "dynamodb_fullaccess" {
       "dynamodb:Get*",
       "dynamodb:PutItem",
     ]
-    resources = ["*"]
+    resources = var.resources
   }
 }

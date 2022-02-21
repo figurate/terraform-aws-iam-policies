@@ -4,7 +4,7 @@
 module "policies" {
   source = "../.."
 
-  policies    = var.policies
+  policies = var.policies
   resources = [
     "arn:aws:s3:::${var.state_bucket}*",
     "arn:aws:dynamodb:*:*:table/${var.lock_table}",

@@ -10,10 +10,10 @@ variable "name_prefix" {
 
 variable "state_bucket" {
   description = "Name of the S3 bucket used for Terraform state"
-  default = "terraform-state"
+  default     = "terraform-state"
 }
 
 variable "lock_table" {
   description = "Name of the DynamoDB table used for Terraform lock"
-  default = "terraform-lock"
+  default     = "terraform-lock"
 }

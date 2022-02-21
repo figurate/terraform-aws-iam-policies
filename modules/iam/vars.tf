@@ -13,7 +13,7 @@ variable "policies" {
 
 variable "resources" {
   description = "Target resources applicable for the provisioned policies"
-  default = ["*"]
+  default     = ["*"]
 }
 
 variable "name_prefix" {

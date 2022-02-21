@@ -34,4 +34,16 @@ data "aws_iam_policy_document" "poweruser_boundary_policy" {
     }
     resources = var.resources
   }
+
+  statement {
+    sid = "RestrictBoundaryPolicyEdit"
+    effect = "Deny"
+    actions = [
+      "iam:CreatePolicyVersion",
+      "iam:DeletePolicy",
+      "iam:DeletePolicyVersion",
+      "iam:SetDefaultPolicyVersion",
+    ]
+    resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/poweruser_boundary_policy"]
+  }
 }

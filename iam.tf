@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "iam_passrole_policy" {
   statement {
-    sid = "IAMPassRolePermission"
+    sid       = "IAMPassRolePermission"
     actions   = ["iam:PassRole"]
     resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*"]
   }
@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "iam_passrole_policy" {
 
 data "aws_iam_policy_document" "cloudformation_passrole_policy" {
   statement {
-    sid = "IAMPassRolePermissionForCloudFormation"
+    sid       = "IAMPassRolePermissionForCloudFormation"
     actions   = ["iam:PassRole"]
     resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-cloudformation-role"]
   }
@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "iam_keyrotation" {
 
 data "aws_iam_policy_document" "iam_servicerole_create" {
   statement {
-    sid = "IAMServiceRoleCreation"
+    sid       = "IAMServiceRoleCreation"
     actions   = ["iam:CreateServiceLinkedRole"]
     resources = var.resources
   }
@@ -40,12 +40,12 @@ data "aws_iam_policy_document" "iam_servicerole_create" {
 
 data "aws_iam_policy_document" "iam_assumerole" {
   statement {
-    sid = "IAMListRolesPermission"
+    sid       = "IAMListRolesPermission"
     actions   = ["iam:ListRoles"]
     resources = var.resources
   }
   statement {
-    sid = "IAMAssumeRolePermission"
+    sid       = "IAMAssumeRolePermission"
     actions   = ["sts:AssumeRole"]
     resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.assume_role_filter}"]
   }

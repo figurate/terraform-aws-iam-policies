@@ -36,7 +36,7 @@ data "aws_iam_policy_document" "poweruser_boundary_policy" {
   }
 
   statement {
-    sid = "RestrictBoundaryPolicyEdit"
+    sid    = "RestrictBoundaryPolicyEdit"
     effect = "Deny"
     actions = [
       "iam:CreatePolicyVersion",

@@ -6,7 +6,7 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
       "logs:PutLogEvents",
       "logs:DescribeLogStreams",
     ]
-#    resources = ["arn:aws:logs:${data.aws_caller_identity.current.account_id}:log-group:*"]
+    #    resources = ["arn:aws:logs:${data.aws_caller_identity.current.account_id}:log-group:*"]
     resources = var.resources
   }
 }
@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "cloudwatch_log_groups" {
       "logs:DescribeLogGroups",
       "logs:PutRetentionPolicy",
     ]
-#    resources = ["arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:*"]
+    #    resources = ["arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:*"]
     resources = var.resources
   }
 }

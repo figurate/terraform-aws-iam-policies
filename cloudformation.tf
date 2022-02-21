@@ -5,6 +5,7 @@ data "aws_iam_policy_document" "cloudformation_create_policy" {
       "cloudformation:Update*",
       "cloudformation:Delete*",
     ]
-    resources = ["arn:aws:cloudformation:${var.region}:${data.aws_caller_identity.current.account_id}:stack/*"]
+#    resources = ["arn:aws:cloudformation:${var.region}:${data.aws_caller_identity.current.account_id}:stack/*"]
+    resources = var.resources
   }
 }

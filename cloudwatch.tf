@@ -17,6 +17,7 @@ data "aws_iam_policy_document" "cloudwatch_log_groups" {
       "logs:DescribeLogGroups",
       "logs:PutRetentionPolicy",
     ]
-    resources = ["arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:*"]
+#    resources = ["arn:aws:logs:${var.region}:${data.aws_caller_identity.current.account_id}:*"]
+    resources = var.resources
   }
 }

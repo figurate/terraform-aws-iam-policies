@@ -1,7 +1,3 @@
-variable "region" {
-  description = "Selected AWS region"
-}
-
 variable "policies" {
   description = "Names of predefined policies to include"
   default = [

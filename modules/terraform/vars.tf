@@ -1,7 +1,3 @@
-variable "region" {
-  description = "Selected AWS region"
-}
-
 variable "policies" {
   description = "Names of predefined policies to include"
   default     = ["s3_terraform_access", "dynamodb_terraform_access"]

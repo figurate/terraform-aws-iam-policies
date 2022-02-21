@@ -1,7 +1,3 @@
-variable "region" {
-  description = "Selected AWS region"
-}
-
 variable "policies" {
   description = "Names of template policies to include for provisioning"
   default     = []

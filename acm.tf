@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "acm_import_certificate" {
       "acm:ImportCertificate",
       "acm:DescribeCertificate",
       "acm:ListTagsForCertificate",
-      "acm:DeleteCertificate",
+#      "acm:DeleteCertificate",
     ]
     resources = var.resources
     condition {

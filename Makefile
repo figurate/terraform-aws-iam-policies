@@ -13,8 +13,8 @@ validate:
 		$(TERRAFORM) -chdir=modules/all init && $(TERRAFORM) -chdir=modules/all validate
 
 test: validate
-	$(CHECKOV) -d /work && \
-		$(CHECKOV) -d /work/modules/all
+	$(CHECKOV) -d /work
+#		$(CHECKOV) -d /work/modules/all
 
 docs:
 	$(TERRAFORM_DOCS) markdown ./ >./README.md && \

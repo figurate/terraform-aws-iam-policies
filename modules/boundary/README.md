@@ -12,7 +12,7 @@ No provider.
 |------|-------------|------|---------|:--------:|
 | name\_prefix | A prefix added to all IAM policy names | `string` | `""` | no |
 | policies | Names of predefined policies to include | `list` | <pre>[<br>  "poweruser_boundary_policy"<br>]</pre> | no |
-| region | Selected AWS region | `any` | n/a | yes |
+| resources | Target resources applicable for the provisioned policies | `list` | <pre>[<br>  "*"<br>]</pre> | no |
 
 ## Outputs
 

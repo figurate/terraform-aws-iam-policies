@@ -11,8 +11,7 @@ clean:
 	rm -rf .terraform/
 
 validate:
-	$(TERRAFORM) init -upgrade && $(TERRAFORM) validate && \
-		$(TERRAFORM) -chdir=modules/all init -upgrade && $(TERRAFORM) -chdir=modules/all validate
+	$(TERRAFORM) init  && $(TERRAFORM) validate
 
 test: validate
 	$(CHECKOV) -d /work
@@ -29,11 +28,7 @@ docs: diagram
 		$(TERRAFORM_DOCS) markdown ./modules/terraform >./modules/terraform/README.md
 
 format:
-	$(TERRAFORM) fmt -list=true ./ && \
-		$(TERRAFORM) fmt -list=true ./modules/all && \
-		$(TERRAFORM) fmt -list=true ./modules/boundary && \
-		$(TERRAFORM) fmt -list=true ./modules/iam && \
-		$(TERRAFORM) fmt -list=true ./modules/terraform
+	$(TERRAFORM) fmt -list=true -recursive
 
 release: test
 	git tag $(VERSION) && git push --tags
